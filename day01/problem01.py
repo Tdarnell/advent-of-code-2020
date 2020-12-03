@@ -1,7 +1,9 @@
 import numpy as np
+# import the data
 infile = np.genfromtxt("day01/input.txt", dtype=int)
-sum_array = np.array([infile + n for n in infile])
-# Improvement 1: Prevent duplicating the array, instead make a 200x200 sum array
-sums = infile[np.where(sum_array == 2020)[0]]
-answer = np.prod(sums)
-print(answer)
+# produce an array of 2020-the input
+search_arr = (infile-2020)*-1
+intersects = np.intersect1d(infile, search_arr)
+# product of the intersects
+prod = np.prod(intersects)
+print("Answer: ", intersects, " which sum to ", np.sum(intersects), " and product of these is ", prod)
